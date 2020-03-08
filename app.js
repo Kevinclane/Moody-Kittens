@@ -20,7 +20,7 @@ function addKitten(event) {
     id: generateId(),
     name: form.name.value,
     mood: "Tolerant",
-    affection: 6
+    affection: 5
   }
 kittens.push(kitten)
 console.log(kittens)
@@ -38,7 +38,6 @@ function saveKittens() {
   drawKittens()
 }
 
-
 function loadKittens() {
   let savedKittens = JSON.parse(window.localStorage.getItem("kittens"))
   if(savedKittens){
@@ -51,23 +50,21 @@ function drawKittens() {
   let template=""
   kittens.forEach(kitten => {
     template+=`
+    https://robohash.org/${kitten.name}?set=set4
     <small>
           <div>
             <h3>Name: ${kitten.name}</h3>
           </div>
           <div>
           <h3>Mood: ${kitten.mood}</h3>
-          <button onclick="pet(${kitten.id})" id = "petButton" class = "">Pet</button>
           </div>
           <div>
-            <h3>Affection: ${kitten.affection}</h3>
-            <button onclick="catnip(${kitten.id})" id = "catnipButton" class = "">Give Catnip</button>
+          <h3>Affection: ${kitten.affection}</h3>
           </div>
           <div>
-            <button onclick="deleteKitten(${kitten.id})">Delete Kitten</button>
-          </div>
-          <div>
-          <button onclick="indexTest(${kitten.id})">TEST</button.
+          <button onclick="pet('${kitten.id}')" id = "petButton" class = "">Pet</button>
+            <button onclick="catnip('${kitten.id}')" id = "catnipButton" class = "">Give Catnip</button>
+            <button onclick="deleteKitten('${kitten.id}')">Delete Kitten</button>
           </div>
     </small>
     `
@@ -83,10 +80,6 @@ function deleteKitten(id) {
   let index = kittens.findIndex(kitten => kitten.id == id)
   kittens.splice(index, 1)
 saveKittens()
-}
-
-function indexTest(id){
-  console.log(id)
 }
 
 function catnip(id) {
@@ -112,18 +105,21 @@ function pet(id) {
 function setKittenMood(kitten) {
   if(kitten.affection >= 6){
     kitten.mood = "Happy"
-  }else if(kitten.affection <= 5){
+  }else if(kitten.affection <= 5 && kitten.affection >3){
     kitten.mood = "Tolerant"
-  }else if(kitten.affection <= 3){
+  }else if(kitten.affection <= 3 && kitten.affection >0){
     kitten.mood = "Angry"
-  }else if(kitten.affection <= 0){
-    runAway()
+  }else if(kitten.affection = 0){
+    runAway(kitten)
   }
 }
 
-function runAway(){
-  document.getElementById("catnipButton").classList.add("hidden")
-  document.getElementById("petButton").classList.add("hidden")
+function runAway(kitten){
+  let catnipButton = document.getElementById("catnipButton")
+  let petButton = document.getElementById("petButton")
+
+  catnipButton.setAttribute("disabled", "true")
+  petButton.setAttribute("disabled", "true")
 }
 
 function getStarted() {
