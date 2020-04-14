@@ -127,6 +127,10 @@ button.btn-special:hover{
   filter: drop-shadow(var(--shadow));
 }
 
+.customFont{
+  font-family: 'Source Serif Pro', serif;
+}
+
 
 .kitten img{
   filter: drop-shadow(2px 4px 6px #1b1b1b);

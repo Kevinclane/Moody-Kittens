@@ -9,13 +9,13 @@
   <link rel="shortcut icon" href="moody-logo.png" type="image/x-icon">
   <link href="https://robohash.org">
   <link href="https://fonts.googleapis.com/css?family=Catamaran&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <header class="bg-dark d-flex align-items-center p-1 space-between">
     <img src="moody-logo.png" height="60" alt="Moody Kittens">
-    TODO add hidden class
     <form id="addKittenForm" class="hidden" onsubmit="addKitten(event)">
       <div class="d-flex">
         <input placeholder="Name" type="text" name="name" required/>
@@ -40,16 +40,18 @@
     <div class="p-2">
 
 
-      <div id="kittens" class="d-flex align-items-center flex-wrap">
+      <div id="kittens" class="d-flex align-items-center flex-wrap customFont">
         
         </div>
 
-
-  </main>
-  <footer class="card bg-dark text-light p-2 d-flex align-items-center justify-content-center">
-    <small>Created with <span style="color: var(--primary)">&hearts;</span> by CodeWorks and modified by Kevin Lane</small>
-  </footer>
-
+        
+        
+        
+      </main>
+      <footer class="card bg-dark text-light p-2 d-flex align-items-center justify-content-center">
+        <small>Created with <span style="color: var(--primary)">&hearts;</span> by CodeWorks and modified by Kevin Lane</small>
+      </footer>
+      
   <script src="app.js"></script>
 </body>
 

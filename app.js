@@ -3,15 +3,6 @@ let kittens = []
 
 loadKittens()
 
-/**
- * Called when submitting the new Kitten Form
- * This method will pull data from the form
- * use the provided function to give the data an id
- * you can use robohash for images
- * https://robohash.org/<INSERTCATNAMEHERE>?set=set4
- * then add that data to the kittens list.
- * Then reset the form
- */
 function addKitten(event) {
   event.preventDefault()
   let form = event.target
@@ -50,7 +41,9 @@ function drawKittens() {
   let template=""
   kittens.forEach(kitten => {
     template+=`
-    https://robohash.org/${kitten.name}?set=set4
+    <div id = "${kitten.id}" class = "kitten happy">
+    <img src="https://robohash.org/${kitten.name}?set=set4" alt="Error">
+    </div>
     <small>
           <div>
             <h3>Name: ${kitten.name}</h3>
@@ -109,17 +102,28 @@ function setKittenMood(kitten) {
     kitten.mood = "Tolerant"
   }else if(kitten.affection <= 3 && kitten.affection >0){
     kitten.mood = "Angry"
-  }else if(kitten.affection = 0){
+    removeHappy(kitten)
+  }else{
     runAway(kitten)
   }
 }
 
 function runAway(kitten){
-  let catnipButton = document.getElementById("catnipButton")
-  let petButton = document.getElementById("petButton")
+  document.getElementById("petButton")
+  
 
-  catnipButton.setAttribute("disabled", "true")
-  petButton.setAttribute("disabled", "true")
+}
+
+function removeHappy(kitten){
+  document.getElementById(kitten.id).classList.remove("happy")
+}
+
+function removeTolorant(kitten){
+  document.getElementById("img").classList.remove("tolorant")
+}
+
+function removeAngry(kitten){
+  document.getElementById("img").classList.remove("angry")
 }
 
 function getStarted() {
