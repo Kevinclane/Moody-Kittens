@@ -109,9 +109,8 @@ function setKittenMood(kitten) {
 }
 
 function runAway(kitten){
-  document.getElementById("petButton")
-  
-
+  document.getElementById("petButton").setAttribute("disable","true")
+  document.getElementById("catnipButton").setAttribute("disable","true")
 }
 
 function removeHappy(kitten){
