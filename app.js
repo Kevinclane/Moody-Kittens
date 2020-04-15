@@ -11,7 +11,10 @@ function addKitten(event) {
     id: generateId(),
     name: form.name.value,
     mood: "Tolerant",
-    affection: 5
+    affection: 5,
+    color: "kitten Tolerant",
+    off: "",
+    button:""
   }
 kittens.push(kitten)
 console.log(kittens)
@@ -22,6 +25,7 @@ form.reset()
 
 function removeHidden(){
   document.getElementById("addKittenForm").classList.remove("hidden")
+  document.getElementById("123").classList.remove("hidden")
 }
 
 function saveKittens() {
@@ -41,7 +45,7 @@ function drawKittens() {
   let template=""
   kittens.forEach(kitten => {
     template+=`
-    <div id = "${kitten.id}" class = "kitten happy">
+    <div id = "${kitten.id}" class = "kitten ${kitten.mood}">
     <img src="https://robohash.org/${kitten.name}?set=set4" alt="Error">
     </div>
     <small>
@@ -55,8 +59,8 @@ function drawKittens() {
           <h3>Affection: ${kitten.affection}</h3>
           </div>
           <div>
-          <button onclick="pet('${kitten.id}')" id = "petButton" class = "">Pet</button>
-            <button onclick="catnip('${kitten.id}')" id = "catnipButton" class = "">Give Catnip</button>
+          <button onclick="pet('${kitten.id}')" id = "petButton" class = "${kitten.button}" ${kitten.off}>Pet</button>
+            <button onclick="catnip('${kitten.id}')" id = "catnipButton" class = "${kitten.button}" ${kitten.off}>Give Catnip</button>
             <button onclick="deleteKitten('${kitten.id}')">Delete Kitten</button>
           </div>
     </small>
@@ -95,6 +99,7 @@ function pet(id) {
   saveKittens()
 }
 
+
 function setKittenMood(kitten) {
   if(kitten.affection >= 6){
     kitten.mood = "Happy"
@@ -102,27 +107,11 @@ function setKittenMood(kitten) {
     kitten.mood = "Tolerant"
   }else if(kitten.affection <= 3 && kitten.affection >0){
     kitten.mood = "Angry"
-    removeHappy(kitten)
   }else{
-    runAway(kitten)
+    kitten.off = "disabled='true'"
+    kitten.mood = "Gone"
+    kitten.button = "kitten Gone"
   }
-}
-
-function runAway(kitten){
-  document.getElementById("petButton").setAttribute("disable","true")
-  document.getElementById("catnipButton").setAttribute("disable","true")
-}
-
-function removeHappy(kitten){
-  document.getElementById(kitten.id).classList.remove("happy")
-}
-
-function removeTolorant(kitten){
-  document.getElementById("img").classList.remove("tolorant")
-}
-
-function removeAngry(kitten){
-  document.getElementById("img").classList.remove("angry")
 }
 
 function getStarted() {

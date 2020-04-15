@@ -131,25 +131,27 @@ button.btn-special:hover{
   font-family: 'Source Serif Pro', serif;
 }
 
-
+.hidden{
+  display: none !important;
+}
 
 .kitten img{
   filter: drop-shadow(2px 4px 6px #1b1b1b);
   transition: all .35s ease;
 }
-.kitten.happy img{
+.kitten.Happy img{
   filter: drop-shadow(2px 4px 6px #00ffb3);
 }
-.kitten.tolerant img{
+.kitten.Yolerant img{
   filter: drop-shadow(2px 4px 6px #646464);
 }
-.kitten.angry img{
+.kitten.Angry img{
   filter: drop-shadow(2px 4px 6px #ff0000) contrast(1);
 }
-.kitten.gone img{
+.kitten.Gone img{
   filter: drop-shadow(2px 4px 6px #ff0000) contrast(0);
 }
-.kitten.gone{
+.kitten.Gone{
   color: var(--danger);
   pointer-events: none;
 }
